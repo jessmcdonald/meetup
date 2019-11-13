@@ -2,7 +2,7 @@
 
 const axios = require("axios");
 
-module.exports.getAccessToken = async event => {
+module.exports.getAccessToken = async (event) => {
   const MEETUP_OAUTH_URL =
     "https://secure.meetup.com/oauth2/access" +
     "?client_id=7e414fuundrb6s3opmhspmud52" +
@@ -26,7 +26,7 @@ module.exports.getAccessToken = async event => {
   };
 };
 
-module.exports.refreshAccessToken = async event => {
+module.exports.refreshAccessToken = async (event) => {
   const MEETUP_OAUTH_URL =
     "https://secure.meetup.com/oauth2/access" +
     "?client_id=7e414fuundrb6s3opmhspmud52" +
