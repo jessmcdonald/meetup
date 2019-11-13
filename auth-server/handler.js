@@ -12,7 +12,7 @@ module.exports.getAccessToken = async event => {
     "&code=" +
     event.pathParameters.code;
 
-  const info = await axios.post(MEETUP_OATH_URL);
+  const info = await axios.post(MEETUP_OAUTH_URL);
 
   return {
     statusCode: 200,
