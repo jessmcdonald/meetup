@@ -2,10 +2,12 @@ import React from "react";
 import { shallow } from "enzyme";
 import CitySearch from "../CitySearch";
 
+//unit tests
+
 describe("<CitySearch /> component", () => {
   let CitySearchWrapper;
   beforeAll(() => {
-    CitySearchWrapper = shallow(<CitySearch />);
+    CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}} />);
   });
 
   test("render text input", () => {
@@ -72,6 +74,44 @@ describe("<CitySearch /> component", () => {
     CitySearchWrapper.find(".suggestions li")
       .at(0)
       .simulate("click");
+    //use toBe since we are comparing primitive data types
     expect(CitySearchWrapper.state("query")).toBe("Munich, Germany");
+  });
+});
+
+//integration tests
+
+//successfully call updateEvents() function in the App component from the CitySearch component whenever user selects a suggestion
+describe("<CitySearch /> integration", () => {
+  test("get list of cities when user searches for Munich", async () => {
+    const CitySearchWrapper = shallow(<CitySearch />);
+    CitySearchWrapper.find(".city").simulate("change", {
+      target: { value: "Munich" }
+    });
+    //wait until CitySearch has been updated before comparing state
+    await CitySearchWrapper.update();
+    //use toEqual i/o toBe because values being compared are objects (complex data types)
+    //toEqual recursively checks every field of object/array
+    expect(CitySearchWrapper.state("suggestions")).toEqual([
+      {
+        city: "Munich",
+        country: "de",
+        localized_country_name: "Germany",
+        name_string: "Munich, Germany",
+        zip: "meetup3",
+        lat: 48.14,
+        lon: 11.58
+      },
+      {
+        city: "Munich",
+        country: "us",
+        localized_country_name: "USA",
+        state: "ND",
+        name_string: "Munich, North Dakota, USA",
+        zip: "58352",
+        lat: 48.66,
+        lon: -98.85
+      }
+    ]);
   });
 });
