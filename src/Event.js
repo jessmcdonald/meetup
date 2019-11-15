@@ -3,8 +3,8 @@ import React, { Component } from "react";
 class Event extends Component {
   state = {
     event: {
-      venue: {
-        city: ""
+      group: {
+        name: ""
       }
     },
     showDetails: false
@@ -23,11 +23,11 @@ class Event extends Component {
     const showDetails = this.state.showDetails;
 
     return (
-      <div className="Event">
+      <div className="Event" event={event}>
         <div className="eventSummary">
           <p className="event_name">{event.name}</p>
           <p className="event_localdate">{event.local_date}</p>
-          <p className="event_city">{event.group.name}</p>
+          <p className="event_group">{event.group.name}</p>
 
           <button
             className="showDetailsButton"

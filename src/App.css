@@ -69,7 +69,7 @@ input[type="number"] {
   position: relative;
 }
 
-.details-btn {
+.showDetailsButton {
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -79,12 +79,12 @@ input[type="number"] {
   cursor: pointer;
 }
 
-.name {
+.event_name {
   font-size: 18px;
   font-weight: 600;
 }
 
-.group-name {
+.event_group {
   text-transform: uppercase;
   font-size: 14px;
 }
@@ -94,7 +94,7 @@ input[type="number"] {
   font-style: italic;
 }
 
-.description {
+.event_description {
   overflow-x: hidden;
 }
 
