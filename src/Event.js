@@ -22,14 +22,26 @@ class Event extends Component {
 
   render() {
     const { event } = this.props;
+
+    const name = event.name;
+    const time = event.local_time;
+    const date = event.local_date;
+    const group = event && event.group ? event.group.name : '';
+    const rsvp = event.yes_rsvp_count;
+    const rsvpLeft = event.rsvp_limit - event.yes_rsvp_count;
+    const description = event.description;
+    const link = event.link;
+    const venue = event && event.venue ? event.venue.name : '';
+
     const showDetails = this.state.showDetails;
 
     return (
       <div className="Event" event={event}>
         <div className="eventSummary">
-          <p className="event_name">{event.name}</p>
-          <p className="event_localdate">{event.local_date}</p>
-          <p className="event_group">{event.group.name}</p>
+          <p className="event_name">{name}</p>
+          <p className="event_localdate">{time} - {date}</p>
+          <p className="event_group">{group}</p>
+          <p className="event_rsvp">{rsvp} going</p>
           {!showDetails && (
             <Button
               variant="dark"
@@ -41,14 +53,12 @@ class Event extends Component {
         {showDetails && (
           <div className="eventDetails">
             <p className="event_description">
-              {event.description ? parse(event.description) : ''}
-
-
+              {description ? parse(description) : ''}
             </p>
             <p className="event_link">
-              <a href={event.link}>{event.link}</a>
+              <a href={link}>{link}</a>
             </p>
-            <p className="event_venue">{event.venue.name}</p>
+            <p className="event_venue">{venue}</p>
             <Button
               variant="dark"
               className="showDetailsButton"
