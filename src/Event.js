@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 class Event extends Component {
   state = {
@@ -26,12 +26,12 @@ class Event extends Component {
     const name = event.name;
     const time = event.local_time;
     const date = event.local_date;
-    const group = event && event.group ? event.group.name : '';
+    const group = event && event.group ? event.group.name : "";
     const rsvp = event.yes_rsvp_count;
     const rsvpLeft = event.rsvp_limit - event.yes_rsvp_count;
     const description = event.description;
     const link = event.link;
-    const venue = event && event.venue ? event.venue.name : '';
+    const venue = event && event.venue ? event.venue.name : "";
 
     const showDetails = this.state.showDetails;
 
@@ -39,7 +39,9 @@ class Event extends Component {
       <div className="Event" event={event}>
         <div className="eventSummary">
           <p className="event_name">{name}</p>
-          <p className="event_localdate">{time} - {date}</p>
+          <p className="event_localdate">
+            {time} - {date}
+          </p>
           <p className="event_group">{group}</p>
           <p className="event_rsvp">{rsvp} going</p>
           {!showDetails && (
@@ -47,13 +49,15 @@ class Event extends Component {
               variant="dark"
               className="showDetailsButton"
               onClick={() => this.handleShowDetails()}
-            >Details
-        </Button>)}
+            >
+              Details
+            </Button>
+          )}
         </div>
         {showDetails && (
           <div className="eventDetails">
             <p className="event_description">
-              {description ? parse(description) : ''}
+              {description ? parse(description) : ""}
             </p>
             <p className="event_link">
               <a href={link}>{link}</a>
@@ -61,16 +65,17 @@ class Event extends Component {
             <p className="event_venue">Venue: {venue}</p>
             <Button
               variant="dark"
-              className="showDetailsButton"
+              className="hideDetailsButton"
               onClick={() => this.handleHideDetails()}
-            > Hide Details
-          </Button>
+            >
+              {" "}
+              Hide Details
+            </Button>
           </div>
         )}
       </div>
     );
   }
 }
-
 
 export default Event;

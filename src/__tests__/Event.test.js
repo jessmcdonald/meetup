@@ -60,7 +60,7 @@ describe("<Event /> component", () => {
   });
 
   test("render event summary children", () => {
-    expect(EventWrapper.find(".eventSummary").children()).toHaveLength(4);
+    expect(EventWrapper.find(".eventSummary").children()).toHaveLength(5);
   });
 
   test("render event name", () => {
