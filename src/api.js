@@ -1,36 +1,39 @@
 import { mockEvents } from "./mock-events";
 import axios from 'axios';
 
+const mockSuggestions = [
+  {
+    city: "Munich",
+    country: "de",
+    localized_country_name: "Germany",
+    name_string: "Munich, Germany",
+    zip: "meetup3",
+    lat: 48.14,
+    lon: 11.58
+  },
+  {
+    city: "Munich",
+    country: "us",
+    localized_country_name: "USA",
+    state: "ND",
+    name_string: "Munich, North Dakota, USA",
+    zip: "58352",
+    lat: 48.66,
+    lon: -98.85
+  }
+]
+
 //api calls are asyncronous
 async function getSuggestions(query) {
   if (window.location.href.startsWith('http://localhost')) {
-
-    return [
-      {
-        city: "Munich",
-        country: "de",
-        localized_country_name: "Germany",
-        name_string: "Munich, Germany",
-        zip: "meetup3",
-        lat: 48.14,
-        lon: 11.58
-      },
-      {
-        city: "Munich",
-        country: "us",
-        localized_country_name: "USA",
-        state: "ND",
-        name_string: "Munich, North Dakota, USA",
-        zip: "58352",
-        lat: 48.66,
-        lon: -98.85
-      }
-    ];
+    return !query ? [] : (mockSuggestions.filter(item => item.city.toLowerCase().includes(query.toLowerCase())));
   }
 
   const token = await getAccessToken();
   if (token) {
-    const url = 'https://api.meetup.com/find/locations?&sign=true&photo-host=public&query=' + query + '&access_token=' + token;
+    const url = 'https://api.meetup.com/find/locations?&sign=true&photo-host=public&query='
+      + query
+      + '&access_token=' + token;
     const result = await axios.get(url);
     return result.data;
   }
@@ -39,15 +42,19 @@ async function getSuggestions(query) {
 
 
 async function getEvents(lat, lon, page) {
+  // return mockEvents.events;
   if (window.location.href.startsWith('http://localhost')) {
-    return mockEvents.events;
+    const city = mockEvents.city;
+    const events = page > 0 ? mockEvents.events.slice(0, page) : [];
+    return { city, events };
   }
 
   const token = await getAccessToken();
 
   if (token) {
-    let url = 'https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public' + '&access_token=' + token;
-    //lat, lon is optional, if have lat & lon can add them
+    let url = 'https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public'
+      + '&access_token=' + token;
+    // lat, lon is optional; if you have a lat and lon, you can add them
     if (lat && lon) {
       url += '&lat=' + lat + '&lon=' + lon;
     }
@@ -55,15 +62,21 @@ async function getEvents(lat, lon, page) {
       url += '&page=' + page;
     }
     const result = await axios.get(url);
-    return result.data.events;
-  }
+    // return result.data;
+    const data = result.data;
 
+    if (data.events.length) {
+      localStorage.setItem('lastData', JSON.stringify(data));
+    }
+
+    return data;
+  }
 }
 
 function getAccessToken() {
-  const accessToken = localStorage.getItem('access_token');
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
   const lastSavedTime = localStorage.getItem('lastSavedTime');
-  const refreshToken = localStorage.getItem('refresh_token');
 
   if (!accessToken) {
     const searchParams = new URLSearchParams(window.location.search);
@@ -96,14 +109,12 @@ async function getOrRenewAccessToken(type, key) {
   }
   //use axios to make GET request to endpoint
   const tokenInfo = await axios.get(url);
+  console.log(tokenInfo);
+  localStorage.setItem('accessToken', tokenInfo.data.accessToken);
+  localStorage.setItem('refreshToken', tokenInfo.data.refreshToken);
+  localStorage.setItem('lastSavedTime', Date.now());
 
-  //save tokens to localStorage together with timestamp
-  localStorage.setItem('access_token', tokenInfo.data.access_token);
-  localStorage.setItem('refresh_token', tokenInfo.data.refresh_token);
-  localStorage.setItem('last_saved_time', Date.now());
-
-  //return access_token
-  return tokenInfo.data.access_token;
+  return tokenInfo.data.accessToken;
 }
 
 
