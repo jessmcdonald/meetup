@@ -44,9 +44,6 @@ class App extends Component {
           <CitySearch updateEvents={this.updateEvents} />
           <NumberOfEvents
             updateEvents={this.updateEvents}
-            numberOfEvents={this.state.events.length}
-            lat={this.state.lat}
-            lon={this.state.lon}
           />
         </header>
 
