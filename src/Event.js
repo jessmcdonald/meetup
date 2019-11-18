@@ -58,7 +58,7 @@ class Event extends Component {
             <p className="event_link">
               <a href={link}>{link}</a>
             </p>
-            <p className="event_venue">{venue}</p>
+            <p className="event_venue">Venue: {venue}</p>
             <Button
               variant="dark"
               className="showDetailsButton"

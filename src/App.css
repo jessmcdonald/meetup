@@ -34,7 +34,11 @@ input[type="number"] {
 
 .city {
   width: 250px;
-  margin-left: 10px;
+  
+}
+
+.NumberOfEvents {
+  margin-bottom: 20px;
 }
 
 .userInputNumberOfEvents {
@@ -42,19 +46,16 @@ input[type="number"] {
   margin-left: 10px;
 }
 
-
 .suggestions {
-  width: 250px;
-  text-align: center;
   display: inline-block;
   align-self: center;
+  width: 250px;  
   margin: 0;
   font-size: 14px;
 }
 
 .suggestions > li {
   text-align: left;
-  display: inline-block;
   padding: 8px 6px 8px 10px;
   background-color: #cccccc;
   cursor: default;
@@ -66,7 +67,7 @@ input[type="number"] {
 }
 
 .suggestions > li:hover {
-  background-color: #b52b65;
+  background-color: #f64060;
 }
 
 .Event {
@@ -79,8 +80,9 @@ input[type="number"] {
 }
 
 .btn-dark {
-  background-color: #110133 !important;
-  box-shadow: 2px 2px 2px #7a68a1 !important;
+  background-color: #f64060 !important;
+  box-shadow: 2px 2px 2px #fa8b9e !important;
+  border-color: #f41b41 !important;
 }
 
 .btn-dark:hover {
@@ -99,6 +101,11 @@ input[type="number"] {
 .event_name {
   font-size: 18px;
   font-weight: 600;
+}
+
+.event_rsvp {
+  font-weight: 600;
+  color: #f64060;
 }
 
 .event_group {

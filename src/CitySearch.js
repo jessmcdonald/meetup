@@ -22,25 +22,30 @@ class CitySearch extends Component {
   render() {
     return (
       <div className="CitySearch">
-        <label className="citySearch_label">City:</label>
-        <input
-          type="text"
-          className="city"
-          value={this.state.query}
-          onChange={this.handleInputChanged}
-        />
-        <ul className="suggestions">
-          {this.state.suggestions.map(item => (
-            <li
-              key={item.name_string}
-              onClick={() =>
-                this.handleItemClicked(item.name_string, item.lat, item.lon)
-              }
-            >
-              {item.name_string}
-            </li>
-          ))}
-        </ul>
+        <div className="searchbar">
+
+          <input
+            type="text"
+            className="city"
+            value={this.state.query}
+            onChange={this.handleInputChanged}
+            placeholder="Search for your city"
+          />
+        </div>
+        <div>
+          <ul className="suggestions">
+            {this.state.suggestions.map(item => (
+              <li
+                key={item.name_string}
+                onClick={() =>
+                  this.handleItemClicked(item.name_string, item.lat, item.lon)
+                }
+              >
+                {item.name_string}
+              </li>
+            ))}
+          </ul>
+        </div >
       </div>
     );
   }
