@@ -34,7 +34,6 @@ input[type="number"] {
 
 .city {
   width: 250px;
-  
 }
 
 .NumberOfEvents {
@@ -49,7 +48,7 @@ input[type="number"] {
 .suggestions {
   display: inline-block;
   align-self: center;
-  width: 250px;  
+  width: 250px;
   margin: 0;
   font-size: 14px;
 }
@@ -68,6 +67,7 @@ input[type="number"] {
 
 .suggestions > li:hover {
   background-color: #f64060;
+  cursor: pointer;
 }
 
 .Event {
@@ -90,6 +90,15 @@ input[type="number"] {
 }
 
 .showDetailsButton {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hideDetailsButton {
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -121,5 +130,3 @@ input[type="number"] {
 .event_description {
   overflow-x: hidden;
 }
-
-
