@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import parse from 'html-react-parser';
 
 class Event extends Component {
   state = {
