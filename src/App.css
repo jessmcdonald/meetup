@@ -28,6 +28,10 @@ input[type="number"] {
   height: 38px;
 }
 
+.citySearch {
+  text-align: center;
+}
+
 .city {
   width: 250px;
   margin-left: 10px;
@@ -41,6 +45,8 @@ input[type="number"] {
 
 .suggestions {
   width: 250px;
+  text-align: center;
+  display: inline-block;
   align-self: center;
   margin: 0;
   font-size: 14px;
@@ -48,6 +54,7 @@ input[type="number"] {
 
 .suggestions > li {
   text-align: left;
+  display: inline-block;
   padding: 8px 6px 8px 10px;
   background-color: #cccccc;
   cursor: default;
