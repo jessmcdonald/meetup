@@ -40,7 +40,11 @@ class Event extends Component {
         </div>
         {showDetails && (
           <div className="eventDetails">
-            <p className="event_description">{event.description}</p>
+            <p className="event_description">
+              {event.description ? parse(event.description) : ''}
+
+
+            </p>
             <p className="event_link">
               <a href={event.link}>{event.link}</a>
             </p>
