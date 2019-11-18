@@ -4,6 +4,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents } from "./api.js";
+import logoimg from './assets/img/logoimg.svg';
 
 class App extends Component {
   componentDidMount() {
@@ -38,13 +39,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <CitySearch updateEvents={this.updateEvents} />
-        <NumberOfEvents
-          updateEvents={this.updateEvents}
-          numberOfEvents={this.state.events.length}
-          lat={this.state.lat}
-          lon={this.state.lon}
-        />
+        <header>
+          <img src={logoimg} alt="Meetup logo" width="200px" />
+          <CitySearch updateEvents={this.updateEvents} />
+          <NumberOfEvents
+            updateEvents={this.updateEvents}
+            numberOfEvents={this.state.events.length}
+            lat={this.state.lat}
+            lon={this.state.lon}
+          />
+        </header>
+
         <EventList events={this.state.events} />
       </div>
     );

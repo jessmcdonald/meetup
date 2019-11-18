@@ -2,25 +2,25 @@ import React, { Component } from "react";
 
 class NumberOfEvents extends Component {
   state = {
-    numberOfEvents: "32",
+    number: "32",
     infoText: ""
   };
 
-  handleInputChanged = event => {
+  handleInputChanged = (event) => {
     const value = event.target.value;
-    this.setState({ numberOfEvents: value });
+    this.setState({
+      number: value
+    })
+    this.props.updateEvents(undefined, undefined, value);
 
-    if (value <= 0) {
-      this.setState({
-        infoText: "You need to see at least 1 event!"
-      });
+    if (value && value < 1) {
+      return this.setState({ infoText: 'You need to see at least 1 event!' });
     } else {
-      this.setState({
-        infoText: ""
-      });
-      this.props.updateEvents(null, null, value);
+      return this.setState({ infoText: '' });
     }
+
   };
+
 
   render() {
     return (
@@ -28,12 +28,13 @@ class NumberOfEvents extends Component {
         <div className="infoText">
           <p>{this.state.infoText}</p>
         </div>
+
         <label className="numberOfEvents_label">Number of events:</label>
         <input
-          type="text"
+          type="number"
           className="userInputNumberOfEvents"
           id="inputChosenNumberOfEvents"
-          value={this.state.numberOfEvents}
+          value={this.state.number}
           onChange={this.handleInputChanged}
         />
       </div>

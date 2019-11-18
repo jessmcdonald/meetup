@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 class Event extends Component {
   state = {
@@ -29,14 +30,13 @@ class Event extends Component {
           <p className="event_name">{event.name}</p>
           <p className="event_localdate">{event.local_date}</p>
           <p className="event_group">{event.group.name}</p>
-
-          <Button
-            variant="dark"
-            className="showDetailsButton"
-            onClick={() => this.handleShowDetails()}
-          >
-            Details
-          </Button>
+          {!showDetails && (
+            <Button
+              variant="dark"
+              className="showDetailsButton"
+              onClick={() => this.handleShowDetails()}
+            >Details
+        </Button>)}
         </div>
         {showDetails && (
           <div className="eventDetails">
@@ -49,14 +49,14 @@ class Event extends Component {
               variant="dark"
               className="showDetailsButton"
               onClick={() => this.handleHideDetails()}
-            >
-              Hide Details
-            </Button>
+            > Hide Details
+          </Button>
           </div>
         )}
       </div>
     );
   }
 }
+
 
 export default Event;

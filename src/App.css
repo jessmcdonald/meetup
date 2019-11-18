@@ -30,12 +30,14 @@ input[type="number"] {
 
 .city {
   width: 250px;
+  margin-left: 10px;
 }
 
-.CitySearch {
-  display: flex;
-  flex-direction: column;
+.userInputNumberOfEvents {
+  width: 100px;
+  margin-left: 10px;
 }
+
 
 .suggestions {
   width: 250px;
@@ -47,7 +49,7 @@ input[type="number"] {
 .suggestions > li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
+  background-color: #cccccc;
   cursor: default;
 }
 
@@ -57,7 +59,7 @@ input[type="number"] {
 }
 
 .suggestions > li:hover {
-  background-color: #bcdcdb;
+  background-color: #b52b65;
 }
 
 .Event {
@@ -69,13 +71,21 @@ input[type="number"] {
   position: relative;
 }
 
+.btn-dark {
+  background-color: #110133 !important;
+  box-shadow: 2px 2px 2px #7a68a1 !important;
+}
+
+.btn-dark:hover {
+  opacity: 0.85;
+}
+
 .showDetailsButton {
   position: absolute;
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
-  outline: none;
   cursor: pointer;
 }
 
@@ -98,8 +108,4 @@ input[type="number"] {
   overflow-x: hidden;
 }
 
-.number-of-events {
-  width: 80px;
-  margin: 20px 0 50px;
-  text-align: right;
-}
+
