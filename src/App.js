@@ -7,33 +7,32 @@ import { getEvents } from "./api.js";
 import logoimg from './assets/img/logoimg.svg';
 
 class App extends Component {
-  componentDidMount() {
-    getEvents().then(response => this.setState({ events: response }));
-  }
+  _isMounted = false;
 
   state = {
     events: [],
-    page: null,
-    lat: null,
-    lon: null
+    city: {},
+    alert: '',
+    chartOpen: false
+  };
+
+  componentDidMount() {
+    this._isMounted = true;
+    if (!navigator.onLine) {
+      this.setState({ alert: 'Note: The app is offline, information shown may not be up to date' });
+    } else {
+      this.setState({ alert: '' });
+    };
+    this.updateEvents(undefined, undefined, 32);
   };
 
   updateEvents = (lat, lon, page) => {
-    if (lat && lon) {
-      getEvents(lat, lon, this.state.page).then(response =>
-        this.setState({ events: response, lat, lon })
-      );
-    } else if (page) {
-      getEvents(this.state.lat, this.state.lon, page).then(response =>
-        this.setState({ events: response, page })
-      );
-    } else {
-      getEvents(
-        this.state.lat,
-        this.state.lon,
-        this.state.page
-      ).then(response => this.setState({ events: response }));
-    }
+    getEvents(lat, lon, page).then(data => {
+      if (this._isMounted) {
+        const { city, events } = data;
+        this.setState({ city, events });
+      }
+    });
   };
 
   render() {
