@@ -1,39 +1,36 @@
 import React, { Component } from "react";
-import Select from "react-select";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-const sortMethods = [
-  { label: "Date", value: "time" },
-  { label: "Recommended", value: "best" }
-];
+import Form from "react-bootstrap/Form";
 
 class SortEvents extends Component {
   state = {
-    sortMethod: "time"
+    sortMethod: "time",
+    infoText: ""
   };
 
-  handleInputChanged = sortMethod => {
-    this.setState({ sortMethod });
-    this.props.updateEvents(undefined, undefined, undefined, { sortMethod });
-    console.log(this.state);
+  handleInputChanged = event => {
+    const value = event.target.value;
+    this.setState({
+      sortMethod: value
+    });
+    this.props.updateEvents(undefined, undefined, undefined, value);
   };
 
   render() {
-    const { sortMethod } = this.state.sortMethod;
-
     return (
-      <div className="SortEvents">
-        <label className="SortEvents_label">Sort events by:</label>
-        <div className="customSelect">
-          <Select
-            options={sortMethods}
-            className="userSelecteventSortMethod"
-            id="inputChosensortMethod"
-            value={sortMethod}
-            onChange={this.handleInputChanged}
-          />
-        </div>
-      </div>
+      <Form>
+        <Form.Label className="SortEvents_label">Sort by:</Form.Label>
+
+        <Form.Control
+          as="select"
+          className="userSelecteventSortMethod"
+          id="inputChosensortMethod"
+          value={this.state.sortMethod}
+          onChange={this.handleInputChanged}
+        >
+          <option value="time">Date</option>
+          <option value="best">Recommended</option> />
+        </Form.Control>
+      </Form>
     );
   }
 }

@@ -25,8 +25,17 @@ select {
   border: 1px solid #ccc;
   font-size: 14px;
   line-height: 20px;
-  align-self: center;
+
   height: 38px;
+}
+
+.container {
+  font-size: 14px;
+  text-align: left;
+}
+.row {
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .citySearch {
@@ -41,39 +50,15 @@ select {
   margin-bottom: 10px;
 }
 
+.userSelecteventSortMethod {
+  width: 200px !important;
+}
+
 .userInputNumberOfEvents {
-  width: 100px;
-  margin-left: 10px;
-}
-
-.custom-select select {
-  display: none; /*hide original SELECT element: */
-}
-
-.SortEvents {
-  margin-bottom: 10px;
-}
-
-.select-items div,
-.select-selected {
-  text-align: left;
-  padding: 8px 6px 8px 10px;
-  background-color: #cccccc;
-  cursor: default;
-}
-
-.select-items:last-child {
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-.customSelect-selected {
-  background-color: #f64060;
-  cursor: pointer;
+  width: 100px !important;
 }
 
 .suggestions {
-  display: inline-block;
   align-self: center;
   width: 250px;
   margin: 0;
@@ -92,8 +77,14 @@ select {
   border-bottom-right-radius: 4px;
 }
 
-.suggestions > li:hover {
-  background-color: #f64060;
+.form-control:focus {
+  border-color: #f64060 !important;
+  box-shadow: 1px 1px 3px 2px #f9899d !important;
+}
+
+.select > .option:checked {
+  background-color: #f64060 !important;
+  box-shadow: 0 0 10px 100px #000 inset !important;
   cursor: pointer;
 }
 

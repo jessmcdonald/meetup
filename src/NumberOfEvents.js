@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Form from "react-bootstrap/Form";
 
 class NumberOfEvents extends Component {
   state = {
@@ -6,21 +7,19 @@ class NumberOfEvents extends Component {
     infoText: ""
   };
 
-  handleInputChanged = (event) => {
+  handleInputChanged = event => {
     const value = event.target.value;
     this.setState({
       number: value
-    })
+    });
     this.props.updateEvents(undefined, undefined, value);
 
     if (value && value < 1) {
-      return this.setState({ infoText: 'You need to see at least 1 event!' });
+      return this.setState({ infoText: "You need to see at least 1 event!" });
     } else {
-      return this.setState({ infoText: '' });
+      return this.setState({ infoText: "" });
     }
-
   };
-
 
   render() {
     return (
@@ -28,15 +27,18 @@ class NumberOfEvents extends Component {
         <div className="infoText">
           <p>{this.state.infoText}</p>
         </div>
-
-        <label className="numberOfEvents_label">Number of events:</label>
-        <input
-          type="number"
-          className="userInputNumberOfEvents"
-          id="inputChosenNumberOfEvents"
-          value={this.state.number}
-          onChange={this.handleInputChanged}
-        />
+        <Form>
+          <Form.Label className="numberOfEvents_label">
+            Events to show:
+          </Form.Label>
+          <Form.Control
+            type="number"
+            className="userInputNumberOfEvents"
+            id="inputChosenNumberOfEvents"
+            value={this.state.number}
+            onChange={this.handleInputChanged}
+          />
+        </Form>
       </div>
     );
   }

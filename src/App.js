@@ -6,6 +6,9 @@ import NumberOfEvents from "./NumberOfEvents";
 import SortEvents from "./SortEvents";
 import { getEvents } from "./api.js";
 import logoimg from "./assets/img/logoimg.svg";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class App extends Component {
   _isMounted = false;
@@ -42,10 +45,27 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <img src={logoimg} alt="Meetup logo" width="200px" />
-          <CitySearch updateEvents={this.updateEvents} />
-          <NumberOfEvents updateEvents={this.updateEvents} />
-          <SortEvents updateEvents={this.updateEvents} />
+          <Container>
+            <Row>
+              <Col sm={4}>
+                <img src={logoimg} alt="Meetup logo" width="200px" />
+              </Col>
+            </Row>
+
+            <Row>
+              <Col sm={4}>
+                <CitySearch updateEvents={this.updateEvents} />
+              </Col>
+              <Col sm={2}></Col>
+              <Col sm={3} className="numberCol">
+                <NumberOfEvents updateEvents={this.updateEvents} />
+              </Col>
+
+              <Col sm={3}>
+                <SortEvents updateEvents={this.updateEvents} />
+              </Col>
+            </Row>
+          </Container>
         </header>
 
         <EventList events={this.state.events} />
