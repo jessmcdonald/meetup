@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import Select from "react-select";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const sortMethods = [
+  { label: "Date", value: "time" },
+  { label: "Recommended", value: "best" }
+];
 
 class SortEvents extends Component {
   state = {
@@ -6,27 +13,28 @@ class SortEvents extends Component {
     infoText: ""
   };
 
-  handleInputChanged = event => {
-    const value = event.target.value;
+  handleInputChanged = sortMethod => {
     this.setState({
-      sortMethod: value
+      sortMethod: sortMethod
     });
-    this.props.updateEvents(undefined, undefined, undefined, value);
+    this.props.updateEvents(undefined, undefined, undefined, sortMethod);
   };
 
   render() {
+    const { sortMethod } = this.state.sortMethod;
+
     return (
       <div className="SortEvents">
         <label className="SortEvents_label">Sort events by:</label>
-        <select
-          className="userSelecteventSortMethod"
-          id="inputChosensortMethod"
-          value={this.state.sortMethod}
-          onChange={this.handleInputChanged}
-        >
-          <option value="time">Date</option>
-          <option value="best">Recommended</option>
-        </select>
+        <div classname="customSelect">
+          <Select
+            options={sortMethods}
+            className="userSelecteventSortMethod"
+            id="inputChosensortMethod"
+            value={sortMethod}
+            onChange={this.handleInputChanged}
+          />
+        </div>
       </div>
     );
   }
