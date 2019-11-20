@@ -9,15 +9,13 @@ const sortMethods = [
 
 class SortEvents extends Component {
   state = {
-    sortMethod: "time",
-    infoText: ""
+    sortMethod: "time"
   };
 
   handleInputChanged = sortMethod => {
-    this.setState({
-      sortMethod: sortMethod
-    });
-    this.props.updateEvents(undefined, undefined, undefined, sortMethod);
+    this.setState({ sortMethod });
+    this.props.updateEvents(undefined, undefined, undefined, { sortMethod });
+    console.log(this.state);
   };
 
   render() {
@@ -26,7 +24,7 @@ class SortEvents extends Component {
     return (
       <div className="SortEvents">
         <label className="SortEvents_label">Sort events by:</label>
-        <div classname="customSelect">
+        <div className="customSelect">
           <Select
             options={sortMethods}
             className="userSelecteventSortMethod"
