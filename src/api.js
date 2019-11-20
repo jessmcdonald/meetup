@@ -46,7 +46,7 @@ async function getSuggestions(query) {
   return [];
 }
 
-async function getEvents(lat, lon, page) {
+async function getEvents(lat, lon, page, order) {
   // return mockEvents.events;
   if (window.location.href.startsWith("http://localhost")) {
     const city = mockEvents.city;
@@ -67,6 +67,9 @@ async function getEvents(lat, lon, page) {
     }
     if (page) {
       url += "&page=" + page;
+    }
+    if (order) {
+      url += "&order=" + order;
     }
     const result = await axios.get(url);
     // return result.data;
