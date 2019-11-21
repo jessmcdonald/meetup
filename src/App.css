@@ -38,6 +38,18 @@ select {
   align-items: center;
 }
 
+.col-sm-4 {
+  text-align: left;
+}
+
+.searchRow {
+  margin-bottom: 20px;
+}
+
+.logoRow {
+  margin-bottom: 15px;
+}
+
 .citySearch {
   text-align: center;
 }
@@ -51,7 +63,7 @@ select {
 }
 
 .userSelecteventSortMethod {
-  width: 200px !important;
+  width: 160px !important;
 }
 
 .userInputNumberOfEvents {
@@ -75,6 +87,11 @@ select {
 .suggestions > li:last-child {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+
+.suggestions > li:hover {
+  background-color: #f64060;
+  cursor: pointer;
 }
 
 .form-control:focus {

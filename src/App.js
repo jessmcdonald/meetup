@@ -46,22 +46,22 @@ class App extends Component {
       <div className="App">
         <header>
           <Container>
-            <Row>
+            <Row className="logoRow">
               <Col sm={4}>
                 <img src={logoimg} alt="Meetup logo" width="200px" />
               </Col>
             </Row>
 
-            <Row>
-              <Col sm={4}>
+            <Row className="searchRow">
+              <Col md={4}>
                 <CitySearch updateEvents={this.updateEvents} />
               </Col>
-              <Col sm={2}></Col>
-              <Col sm={3} className="numberCol">
+              <Col md={2}></Col>
+              <Col md={3} className="numberCol">
                 <NumberOfEvents updateEvents={this.updateEvents} />
               </Col>
 
-              <Col sm={3}>
+              <Col md={3}>
                 <SortEvents updateEvents={this.updateEvents} />
               </Col>
             </Row>
