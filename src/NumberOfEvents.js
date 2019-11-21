@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
+import { ErrorAlert } from "./Alert";
 
 class NumberOfEvents extends Component {
   state = {
@@ -15,7 +16,7 @@ class NumberOfEvents extends Component {
     this.props.updateEvents(undefined, undefined, value);
 
     if (value && value < 1) {
-      return this.setState({ infoText: "You need to see at least 1 event!" });
+      return this.setState({ infoText: "Must be at least 1!" });
     } else {
       return this.setState({ infoText: "" });
     }
@@ -24,9 +25,6 @@ class NumberOfEvents extends Component {
   render() {
     return (
       <div className="NumberOfEvents">
-        <div className="infoText">
-          <p>{this.state.infoText}</p>
-        </div>
         <Form>
           <Form.Label className="numberOfEvents_label">
             Events to show:
@@ -39,6 +37,7 @@ class NumberOfEvents extends Component {
             onChange={this.handleInputChanged}
           />
         </Form>
+        <ErrorAlert text={this.state.infoText} />
       </div>
     );
   }

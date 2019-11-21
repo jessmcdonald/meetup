@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
+import { WarningAlert } from "./Alert";
 
 class SortEvents extends Component {
   state = {
@@ -17,20 +18,23 @@ class SortEvents extends Component {
 
   render() {
     return (
-      <Form>
-        <Form.Label className="SortEvents_label">Sort by:</Form.Label>
+      <div className="sortEvents">
+        <Form>
+          <Form.Label className="SortEvents_label">Sort by:</Form.Label>
 
-        <Form.Control
-          as="select"
-          className="userSelecteventSortMethod"
-          id="inputChosensortMethod"
-          value={this.state.sortMethod}
-          onChange={this.handleInputChanged}
-        >
-          <option value="time">Date</option>
-          <option value="best">Recommended</option> />
-        </Form.Control>
-      </Form>
+          <Form.Control
+            as="select"
+            className="userSelecteventSortMethod"
+            id="inputChosensortMethod"
+            value={this.state.sortMethod}
+            onChange={this.handleInputChanged}
+          >
+            <option value="time">Date</option>
+            <option value="best">Recommended</option> />
+          </Form.Control>
+        </Form>
+        <WarningAlert />
+      </div>
     );
   }
 }

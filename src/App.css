@@ -13,7 +13,7 @@ ul {
 }
 
 p {
-  margin: 5px 0;
+  margin-bottom: 0 !important;
 }
 
 input[type="text"],
@@ -46,6 +46,10 @@ select {
   margin-bottom: 20px;
 }
 
+.Alert {
+  height: 30px;
+}
+
 .logoRow {
   margin-bottom: 15px;
 }
@@ -56,10 +60,6 @@ select {
 
 .city {
   width: 250px;
-}
-
-.NumberOfEvents {
-  margin-bottom: 10px;
 }
 
 .userSelecteventSortMethod {
