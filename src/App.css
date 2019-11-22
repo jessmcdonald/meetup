@@ -172,10 +172,6 @@ select {
   font-family: "Pacifico", cursive;
 }
 
-.modalEventDetails {
-  width: 80% !important;
-}
-
 .event_name {
   font-size: 18px;
   font-weight: 600;
