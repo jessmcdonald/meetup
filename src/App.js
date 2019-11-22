@@ -9,6 +9,7 @@ import groupimg from "./assets/img/group.jpg";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { InfoAlert } from "./Alert";
 
 class App extends Component {
   _isMounted = false;
@@ -70,7 +71,7 @@ class App extends Component {
             </Row>
           </Container>
         </header>
-
+        {this.state.alert ? <InfoAlert text={this.state.alert} /> : ""}
         <EventList events={this.state.events} />
       </div>
     );
