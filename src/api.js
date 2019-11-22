@@ -78,15 +78,17 @@ async function getEvents(lat, lon, page, order) {
       url += "&order=" + order;
     }
     const result = await axios.get(url);
+    const events = result.data.events;
     // return result.data;
     const data = result.data;
 
-    if (data.events.length) {
-      localStorage.setItem("lastData", JSON.stringify(data));
+    if (events.length) {
+      localStorage.setItem("lastEvents", JSON.stringify(events));
     }
 
-    return data;
+    return events;
   }
+  return [];
 }
 
 function getAccessToken() {
