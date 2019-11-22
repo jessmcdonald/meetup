@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Arimo", sans-serif !important;
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -16,6 +20,29 @@ p {
   margin-bottom: 0 !important;
 }
 
+h1 {
+  font-family: "Pacifico", cursive;
+  color: #f64060;
+}
+
+@media screen and (min-width: 801px) {
+  h1 {
+    font-size: 100px !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 80px !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 60px !important;
+  }
+}
+
 input[type="text"],
 input[type="number"],
 select {
@@ -23,9 +50,9 @@ select {
   border-radius: 4px;
   outline: none;
   border: 1px solid #ccc;
-  font-size: 14px;
+  font-size: 14px !important;
   line-height: 20px;
-
+  font-family: "Arimo", sans-serif !important;
   height: 38px;
 }
 
@@ -52,6 +79,7 @@ select {
 
 .logoRow {
   margin-bottom: 15px;
+  justify-content: space-between;
 }
 
 .citySearch {
@@ -128,18 +156,24 @@ select {
   position: absolute;
   right: 5px;
   bottom: 5px;
-  padding: 5px 8px;
-  border-radius: 4px;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 20px !important;
   cursor: pointer;
+  font-family: "Pacifico", cursive;
 }
 
 .hideDetailsButton {
   position: absolute;
   right: 5px;
   bottom: 5px;
-  padding: 5px 8px;
-  border-radius: 4px;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 20px !important;
   cursor: pointer;
+  font-family: "Pacifico", cursive;
+}
+
+.modalEventDetails {
+  width: 80% !important;
 }
 
 .event_name {

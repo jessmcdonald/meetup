@@ -10,13 +10,13 @@ class EventList extends Component {
 
     return (
       <Container>
-        <ul className="EventList">
+        <Row className="EventList">
           {events.map(event => (
-            <li key={event.id}>
+            <Col key={event.id} sm={12} md={6}>
               <Event event={event} />
-            </li>
+            </Col>
           ))}
-        </ul>
+        </Row>
       </Container>
     );
   }

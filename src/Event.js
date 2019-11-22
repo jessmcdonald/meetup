@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
+import { Button, Card, Modal } from "react-bootstrap";
 import parse from "html-react-parser";
 
 class Event extends Component {
@@ -36,14 +36,16 @@ class Event extends Component {
     const showDetails = this.state.showDetails;
 
     return (
-      <div className="Event" event={event}>
-        <div className="eventSummary">
-          <p className="event_name">{name}</p>
-          <p className="event_localdate">
+      <Card className="Event" event={event}>
+        <Card.Body className="eventSummary">
+          <Card.Title className="event_name">{name}</Card.Title>
+          <Card.Subtitle className="event_localdate">
             {time} - {date}
-          </p>
-          <p className="event_group">{group}</p>
-          <p className="event_rsvp">{rsvp} going</p>
+          </Card.Subtitle>
+          <Card.Text>
+            <p className="event_group">{group}</p>
+            <p className="event_rsvp">{rsvp} going</p>
+          </Card.Text>
           {!showDetails && (
             <Button
               variant="dark"
@@ -53,27 +55,44 @@ class Event extends Component {
               Details
             </Button>
           )}
-        </div>
-        {showDetails && (
-          <div className="eventDetails">
+        </Card.Body>
+
+        <Modal
+          show={this.state.showDetails}
+          onHide={this.handleHideDetails}
+          centered
+          size="lg"
+        >
+          <Modal.Header>
+            <Modal.Title>
+              <h3>
+                <b>{name}</b>
+              </h3>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="eventDetails">
+            <h4 className="event_venue">
+              {time} - {date} | {venue}
+            </h4>
             <p className="event_description">
               {description ? parse(description) : ""}
             </p>
             <p className="event_link">
               <a href={link}>{link}</a>
             </p>
-            <p className="event_venue">Venue: {venue}</p>
-            <Button
-              variant="dark"
-              className="hideDetailsButton"
-              onClick={() => this.handleHideDetails()}
-            >
-              {" "}
-              Hide Details
-            </Button>
-          </div>
-        )}
-      </div>
+            <Modal.Footer>
+              <Button
+                variant="dark"
+                className="hideDetailsButton"
+                onClick={() => this.handleHideDetails()}
+              >
+                {" "}
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal.Body>
+        </Modal>
+      </Card>
     );
   }
 }

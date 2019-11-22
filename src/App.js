@@ -5,7 +5,7 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import SortEvents from "./SortEvents";
 import { getEvents } from "./api.js";
-import logoimg from "./assets/img/logoimg.svg";
+import groupimg from "./assets/img/group.jpg";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -47,8 +47,11 @@ class App extends Component {
         <header>
           <Container>
             <Row className="logoRow">
-              <Col sm={4}>
-                <img src={logoimg} alt="Meetup logo" width="200px" />
+              <Col xs={12} sm={6} lg={4}>
+                <h1>Meetus</h1>
+              </Col>
+              <Col xs={6} sm={6} lg={5}>
+                <img src={groupimg} width="100%" />
               </Col>
             </Row>
 

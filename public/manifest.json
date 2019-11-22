@@ -1,15 +1,15 @@
 {
-  "short_name": "Meetup App",
-  "name": "Meetup App | Find events near you",
+  "short_name": "MeetUs App",
+  "name": "MeetUs App | Find events near you",
   "icons": [
     {
-      "src": "meetupfavicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
+      "src": "meetfavicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }
