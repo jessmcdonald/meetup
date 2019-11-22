@@ -55,8 +55,8 @@ async function getEvents(lat, lon, page, order) {
   }
 
   if (!navigator.onLine) {
-    const events = localStorage.getItem("lastEvents");
-    return JSON.parse(events);
+    const data = localStorage.getItem("lastData");
+    return JSON.parse(data);
   }
 
   const token = await getAccessToken();
@@ -80,13 +80,13 @@ async function getEvents(lat, lon, page, order) {
     const result = await axios.get(url);
     const events = result.data.events;
     // return result.data;
-    //const data = result.data;
+    const data = result.data;
 
-    if (events.length) {
-      localStorage.setItem("lastEvents", JSON.stringify(events));
+    if (data.events.length) {
+      localStorage.setItem("lastData", JSON.stringify(data));
     }
 
-    return events;
+    return data;
   }
 }
 
