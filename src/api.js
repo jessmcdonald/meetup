@@ -54,6 +54,11 @@ async function getEvents(lat, lon, page, order) {
     return { city, events };
   }
 
+  if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    return JSON.parse(events);
+  }
+
   const token = await getAccessToken();
 
   if (token) {
@@ -61,6 +66,7 @@ async function getEvents(lat, lon, page, order) {
       "https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public" +
       "&access_token=" +
       token;
+
     // lat, lon is optional; if you have a lat and lon, you can add them
     if (lat && lon) {
       url += "&lat=" + lat + "&lon=" + lon;
