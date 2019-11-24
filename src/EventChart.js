@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import moment from "moment";
 import {
-  ScatterChart,
-  Scatter,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -51,22 +51,23 @@ class EventChart extends Component {
 
     return (
       <ResponsiveContainer height={400}>
-        <ScatterChart
+        <AreaChart
           width={800}
           height={400}
           margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+          data={this.getData(events)}
         >
-          <CartesianGrid />
+          <CartesianGrid strokeDasharray="3 3" />
           <XAxis type="category" dataKey="date" name="date" />
-          <YAxis
-            type="number"
+          <YAxis type="number" name="number of events" allowDecimals={false} />
+          <Tooltip />
+          <Area
+            type="monotone"
             dataKey="number"
-            name="number of events"
-            allowDecimals={false}
+            stroke="#f64060"
+            fill="#f64060"
           />
-          <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-          <Scatter data={this.getData(events)} fill="#f64060" />
-        </ScatterChart>
+        </AreaChart>
       </ResponsiveContainer>
     );
   }

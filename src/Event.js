@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Card, Modal } from "react-bootstrap";
 import parse from "html-react-parser";
+import RSVPChart from "./RSVPChart";
 
 class Event extends Component {
   state = {
@@ -44,8 +45,14 @@ class Event extends Component {
           </Card.Subtitle>
           <Card.Text>
             <p className="event_group">{group}</p>
-            <p className="event_rsvp">{rsvp} going</p>
+
+            {rsvpLeft ? (
+              <RSVPChart event={event} />
+            ) : (
+              <p className="event_rsvp">{rsvp} going</p>
+            )}
           </Card.Text>
+
           {!showDetails && (
             <Button
               variant="dark"

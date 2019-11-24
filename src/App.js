@@ -6,9 +6,7 @@ import NumberOfEvents from "./NumberOfEvents";
 import SortEvents from "./SortEvents";
 import { getEvents } from "./api.js";
 import groupimg from "./assets/img/group.jpg";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Container, Row, Col, Button, Collapse } from "react-bootstrap";
 import { InfoAlert } from "./Alert";
 import EventChart from "./EventChart";
 import moment from "moment";
@@ -19,7 +17,8 @@ class App extends Component {
   state = {
     events: [],
     city: {},
-    alert: ""
+    alert: "",
+    chartOpen: false
   };
 
   componentDidMount() {
@@ -44,6 +43,11 @@ class App extends Component {
     });
   };
 
+  toggleChart = () => {
+    console.log(this.state.chartOpen);
+    this.setState({ chartOpen: !this.state.chartOpen });
+  };
+
   render() {
     return (
       <div className="App">
@@ -62,19 +66,35 @@ class App extends Component {
               <Col md={4}>
                 <CitySearch updateEvents={this.updateEvents} />
               </Col>
-              <Col md={2}></Col>
-              <Col md={3} className="numberCol">
+              <Col md={2} className="numberCol">
                 <NumberOfEvents updateEvents={this.updateEvents} />
+              </Col>
+              <Col md={3}>
+                <SortEvents updateEvents={this.updateEvents} />
               </Col>
 
               <Col md={3}>
-                <SortEvents updateEvents={this.updateEvents} />
+                <Button
+                  variant="dark"
+                  onClick={this.toggleChart}
+                  aria-controls="event-chart"
+                  aria-expanded={this.state.chartOpen}
+                  className="showChartButton"
+                >
+                  Events this week >>
+                </Button>
               </Col>
             </Row>
           </Container>
         </header>
         {this.state.alert ? <InfoAlert text={this.state.alert} /> : ""}
-        <EventChart events={this.state.events} />
+
+        <Collapse in={this.state.chartOpen}>
+          <div id="event-chart">
+            <EventChart events={this.state.events} />
+          </div>
+        </Collapse>
+
         <EventList events={this.state.events} />
       </div>
     );
