@@ -65,7 +65,7 @@ class EventChart extends Component {
             type="monotone"
             dataKey="number"
             stroke="#f64060"
-            fill="#f64060"
+            fill="#12b88a"
           />
         </AreaChart>
       </ResponsiveContainer>

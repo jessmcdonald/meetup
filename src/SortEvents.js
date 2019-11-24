@@ -29,8 +29,13 @@ class SortEvents extends Component {
             value={this.state.sortMethod}
             onChange={this.handleInputChanged}
           >
-            <option value="time">Date</option>
-            <option value="best">Recommended</option> />
+            <option className="selectOption" value="time">
+              Date
+            </option>
+            <option className="selectOption" value="best">
+              Recommended
+            </option>{" "}
+            />
           </Form.Control>
         </Form>
         <WarningAlert />

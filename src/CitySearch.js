@@ -48,7 +48,6 @@ class CitySearch extends Component {
           />
         </Form>
 
-        <InfoAlert text={this.state.infoText} />
         <ul className="suggestions">
           {this.state.suggestions.map(item => (
             <li
@@ -61,6 +60,7 @@ class CitySearch extends Component {
             </li>
           ))}
         </ul>
+        <InfoAlert text={this.state.infoText} />
       </div>
     );
   }

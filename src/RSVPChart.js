@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import moment from "moment";
-import { PieChart, Pie, Legend, Tooltip } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Legend,
+  Tooltip,
+  ResponsiveContainer,
+  Cell
+} from "recharts";
 
 class RSVPChart extends Component {
   state = {
@@ -15,21 +22,21 @@ class RSVPChart extends Component {
       { name: "going", value: rsvp },
       { name: "free spots", value: rsvpLeft }
     ];
+    const colors = ["#68396d", "#12b88a"];
     console.log(rsvp);
     console.log(rsvpLeft);
 
     return (
-      <PieChart width={100} height={100}>
-        <Pie
-          data={pieData}
-          cx={40}
-          cy={40}
-          innerRadius={7}
-          outerRadius={35}
-          fill="#82ca9d"
-        />
-        <Tooltip />
-      </PieChart>
+      <ResponsiveContainer height={70}>
+        <PieChart width={80} height={80}>
+          <Pie data={pieData} cx={40} cy={25} innerRadius={7} outerRadius={25}>
+            {pieData.map((entry, index) => (
+              <Cell fill={colors[index % colors.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
     );
   }
 }

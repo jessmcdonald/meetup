@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Card, Modal } from "react-bootstrap";
+import { Button, Card, Modal, Row, Col } from "react-bootstrap";
 import parse from "html-react-parser";
 import RSVPChart from "./RSVPChart";
 
@@ -47,21 +47,45 @@ class Event extends Component {
             <p className="event_group">{group}</p>
 
             {rsvpLeft ? (
-              <RSVPChart event={event} />
+              <Row className="rsvpchart">
+                <Col md={3}>
+                  <RSVPChart event={event} />
+                </Col>
+                <Col md={5}>
+                  <div className="event_rsvp">{rsvp} going</div>
+                  <div className="event_rsvpLeft">{rsvpLeft} spots left</div>
+                </Col>
+                <Col md={4}>
+                  {!showDetails && (
+                    <Button
+                      variant="dark"
+                      className="showDetailsButton"
+                      onClick={() => this.handleShowDetails()}
+                    >
+                      Details
+                    </Button>
+                  )}
+                </Col>
+              </Row>
             ) : (
-              <p className="event_rsvp">{rsvp} going</p>
+              <Row className="rsvptext">
+                <Col md={8}>
+                  <div className="event_rsvp">{rsvp} going</div>
+                </Col>
+                <Col md={4}>
+                  {!showDetails && (
+                    <Button
+                      variant="dark"
+                      className="showDetailsButton"
+                      onClick={() => this.handleShowDetails()}
+                    >
+                      Details
+                    </Button>
+                  )}
+                </Col>
+              </Row>
             )}
           </Card.Text>
-
-          {!showDetails && (
-            <Button
-              variant="dark"
-              className="showDetailsButton"
-              onClick={() => this.handleShowDetails()}
-            >
-              Details
-            </Button>
-          )}
         </Card.Body>
 
         <Modal
@@ -81,6 +105,21 @@ class Event extends Component {
             <h4 className="event_venue">
               {time} - {date} | {venue}
             </h4>
+
+            {rsvpLeft ? (
+              <Row className="rsvpchart">
+                <Col md={2}>
+                  <RSVPChart event={event} />
+                </Col>
+                <Col md={10}>
+                  <div className="event_rsvp">{rsvp} going</div>
+                  <div className="event_rsvpLeft">{rsvpLeft} spots left</div>
+                </Col>
+              </Row>
+            ) : (
+              <div className="event_rsvp">{rsvp} going</div>
+            )}
+
             <p className="event_description">
               {description ? parse(description) : ""}
             </p>
