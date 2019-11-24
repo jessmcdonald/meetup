@@ -10,6 +10,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { InfoAlert } from "./Alert";
+import EventChart from "./EventChart";
+import moment from "moment";
 
 class App extends Component {
   _isMounted = false;
@@ -72,6 +74,7 @@ class App extends Component {
           </Container>
         </header>
         {this.state.alert ? <InfoAlert text={this.state.alert} /> : ""}
+        <EventChart events={this.state.events} />
         <EventList events={this.state.events} />
       </div>
     );
