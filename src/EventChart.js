@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import {
   AreaChart,
   Area,
@@ -50,25 +51,33 @@ class EventChart extends Component {
     const { events } = this.props;
 
     return (
-      <ResponsiveContainer height={400}>
-        <AreaChart
-          width={800}
-          height={400}
-          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-          data={this.getData(events)}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis type="category" dataKey="date" name="date" />
-          <YAxis type="number" name="number of events" allowDecimals={false} />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="number"
-            stroke="#f64060"
-            fill="#12b88a"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      <Container>
+        <Row>
+          <ResponsiveContainer height={400}>
+            <AreaChart
+              width={400}
+              height={400}
+              margin={{ top: 20, right: 60, bottom: 20, left: 10 }}
+              data={this.getData(events)}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="category" dataKey="date" name="date" />
+              <YAxis
+                type="number"
+                name="number of events"
+                allowDecimals={false}
+              />
+              <Tooltip />
+              <Area
+                type="monotone"
+                dataKey="number"
+                stroke="#f64060"
+                fill="#12b88a"
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </Row>
+      </Container>
     );
   }
 }

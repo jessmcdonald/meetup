@@ -177,6 +177,7 @@ select {
 .event_rsvp {
   font-weight: 700;
   color: #68396d;
+  z-index: 1 !important;
 }
 
 .event_rsvpLeft {
@@ -196,4 +197,9 @@ select {
 
 .event_description {
   overflow-x: hidden;
+}
+
+.recharts-tooltip-wrapper {
+  background: rgba(255, 255, 255, 1) !important;
+  z-index: 999 !important;
 }

@@ -29,7 +29,7 @@ class RSVPChart extends Component {
     return (
       <ResponsiveContainer height={70}>
         <PieChart width={80} height={80}>
-          <Pie data={pieData} cx={40} cy={25} innerRadius={7} outerRadius={25}>
+          <Pie data={pieData} cx={25} cy={25} innerRadius={7} outerRadius={25}>
             {pieData.map((entry, index) => (
               <Cell fill={colors[index % colors.length]} />
             ))}
