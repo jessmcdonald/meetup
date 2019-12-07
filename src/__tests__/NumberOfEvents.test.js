@@ -29,14 +29,14 @@ describe("<CitySearch /> component", () => {
   });
 
   test("render NumberOfEvents text input correctly", () => {
-    const numberOfEvents = NumberOfEventsWrapper.state("numberOfEvents");
+    const numberOfEvents = NumberOfEventsWrapper.state("number");
     expect(
       NumberOfEventsWrapper.find(".userInputNumberOfEvents").prop("value")
     ).toBe(numberOfEvents);
   });
 
   test("default numberOfEvents should be 32", () => {
-    expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe("32");
+    expect(NumberOfEventsWrapper.state("number")).toBe("32");
   });
 
   test("change state when text input changes", () => {
@@ -45,6 +45,6 @@ describe("<CitySearch /> component", () => {
       "change",
       eventObject
     );
-    expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe("12");
+    expect(NumberOfEventsWrapper.state("number")).toBe("12");
   });
 });

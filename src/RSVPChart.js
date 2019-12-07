@@ -23,8 +23,6 @@ class RSVPChart extends Component {
       { name: "free spots", value: rsvpLeft }
     ];
     const colors = ["#68396d", "#12b88a"];
-    console.log(rsvp);
-    console.log(rsvpLeft);
 
     return (
       <ResponsiveContainer height={70}>

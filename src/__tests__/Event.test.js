@@ -60,7 +60,7 @@ describe("<Event /> component", () => {
   });
 
   test("render event summary children", () => {
-    expect(EventWrapper.find(".eventSummary").children()).toHaveLength(5);
+    expect(EventWrapper.find(".eventSummary").children()).toHaveLength(3);
   });
 
   test("render event name", () => {
@@ -94,18 +94,11 @@ describe("<Event /> component", () => {
     expect(EventWrapper.find(".eventDetails")).toHaveLength(1);
   });
 
-  test("event details are NOT shown when state showDetails: false", () => {
-    EventWrapper.setState({
-      showDetails: false
-    });
-    expect(EventWrapper.find(".eventDetails").children()).toHaveLength(0);
-  });
-
   test("event details children are shown when state showDetails: true", () => {
     EventWrapper.setState({
       showDetails: true
     });
-    expect(EventWrapper.find(".eventDetails").children()).toHaveLength(4);
+    expect(EventWrapper.find(".eventDetails").children()).toHaveLength(5);
   });
 
   test("event description shown when state showDetails: true", () => {

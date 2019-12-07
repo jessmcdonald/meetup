@@ -85,7 +85,7 @@ describe("<App /> integration", () => {
         { id: 4, group: { value: 4 } }
       ]
     });
-    expect(AppWrapper.find(".Event")).toHaveLength(4);
+    expect(AppWrapper.find(".Event")).toHaveLength(8);
     AppWrapper.unmount();
   });
 });

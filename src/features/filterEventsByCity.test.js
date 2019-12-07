@@ -26,7 +26,7 @@ defineFeature(feature, test => {
       () => {
         AppWrapper.update();
         expect(AppWrapper.find(".Event")).toHaveLength(
-          mockEvents.events.length
+          mockEvents.events.length * 2
         );
       }
     );
@@ -69,9 +69,11 @@ defineFeature(feature, test => {
     let AppWrapper;
     given('user was typing "Munich" in the city textbox', () => {
       AppWrapper = mount(<App />);
-      AppWrapper.find(".city").simulate("change", {
-        target: { value: "Munich" }
-      });
+      AppWrapper.find(".city")
+        .at(1)
+        .simulate("change", {
+          target: { value: "Munich" }
+        });
     });
 
     and("the list of suggested cities is showing", () => {
@@ -100,7 +102,7 @@ defineFeature(feature, test => {
       "the user should receive a list of upcoming events in that city",
       () => {
         expect(AppWrapper.find(".Event")).toHaveLength(
-          mockEvents.events.length
+          mockEvents.events.length * 2
         );
       }
     );

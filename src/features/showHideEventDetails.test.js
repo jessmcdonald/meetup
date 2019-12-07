@@ -22,7 +22,7 @@ defineFeature(feature, test => {
     when("the user views the event list", () => {});
 
     then("the user should see the list of events with no details.", () => {
-      expect(EventWrapper.find(".eventDetails")).toHaveLength(0);
+      expect(EventWrapper.find("Modal")).toHaveLength(0);
     });
   });
 
@@ -68,7 +68,7 @@ defineFeature(feature, test => {
     });
 
     then("the event details will collapse", () => {
-      expect(EventWrapper.find(".eventDetails")).toHaveLength(0);
+      expect(EventWrapper.find("Modal")).toHaveLength(0);
     });
   });
 });
