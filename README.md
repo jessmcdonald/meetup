@@ -4,7 +4,7 @@
 
 </div>
 
-## PWA using Meetup API
+## PWA using the Meetup API
 
 Meetup API: [https://secure.meetup.com/meetup_api](https://secure.meetup.com/meetup_api) </br>
 
